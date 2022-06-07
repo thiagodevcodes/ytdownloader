@@ -11,20 +11,22 @@ async function baixarmusica(req, res) {
     let er = /[^a-z0-9-g()]/gi;
     videotitle = videotitle.replace(er, " ");
 
-    let download = ytdl(link);
+    let download;
 
     if(tipo == "MP3") {
         format = ".mp3";
-        download = ytdl(link,{filter: 'audioonly'});
+        download = ytdl(link, {filter: 'audioonly'});
     } else {
         if(tipo == "MP4") {
             format = ".mp4";
+            download = ytdl(link);
+
         }
     }
 
     const WriteStream = fs.createWriteStream("./downloads/" + videotitle + format);
     download.pipe(WriteStream);
-    
+
     res.redirect("/");
 }
 
