@@ -13,15 +13,18 @@ async function baixarmusica(req, res) {
 
     let download;
 
-    if(tipo == "MP3") {
-        format = ".mp3";
-        download = ytdl(link, {filter: 'audioonly'});
-    } else {
-        if(tipo == "MP4") {
+    switch (tipo) {
+        case "MP3":
+            format = ".mp3";
+            download = ytdl(link, {filter: 'audioonly'});
+            break;
+        case "MP4":
             format = ".mp4";
             download = ytdl(link);
-
-        }
+        default:
+            format = ".mp3";
+            download = ytdl(link, {filter: 'audioonly'});
+            break;
     }
 
     const WriteStream = fs.createWriteStream("./downloads/" + videotitle + format);
