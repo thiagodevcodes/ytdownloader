@@ -16,20 +16,20 @@ async function baixarmusica(req, res) {
     switch (tipo) {
         case "MP3":
             format = ".mp3";
-            download = ytdl(link, {filter: 'audioonly'});
+            download = ytdl.downloadFromInfo(info, {filter: 'audioonly'})
             break;
         case "MP4":
             format = ".mp4";
-            download = ytdl(link);
+            download = ytdl.downloadFromInfo(info);
+            break;
         default:
             format = ".mp3";
-            download = ytdl(link, {filter: 'audioonly'});
+            download = ytdl.downloadFromInfo(info, {filter: 'audioonly'});
             break;
     }
 
     const WriteStream = fs.createWriteStream("./downloads/" + videotitle + format);
     download.pipe(WriteStream);
-
     res.redirect("/");
 }
 

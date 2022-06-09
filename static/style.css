@@ -4,7 +4,7 @@ body {
 
 #area {
     position: absolute;
-    border-radius: 40px;
+    border-radius: 20px;
     background-color: white;
     border: 1px solid black;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -41,27 +41,29 @@ body {
     width: 50px;
 }
 
+#link {
+
+}
 
 #link-input {
     width: 250px;
-    font-size: 11pt;
+    padding: 8px;
+    border: 1px solid black;
+    font-size: 14px;
 }
 
 
 #button {
     background-color: rgb(206, 2, 2);
     border: none;
-    border-radius: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     cursor: pointer;
     color: white;
+    padding: 10px;
+    border-radius: 3px;
 }
 
 #button:hover {
-    background-color: rgb(148, 0, 0);
+    background-color: rgb(116, 3, 3);
 }
 
 
