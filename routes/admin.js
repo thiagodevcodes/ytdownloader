@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const baixarmusica = require("../functions/download");
+const baixarmusica = require("../public/download");
 
 router.get( "/", (req, res) => {
-    res.render("home");
+    res.sendFile(__dirname + "/pages/home.html");
 })
 
 router.post( "/baixar", (req, res) => {
