@@ -7,28 +7,32 @@ async function baixarmusica(req, res) {
     let info = await ytdl.getInfo(link);
     let videotitle = info.videoDetails.title;
     let format;
+    let download;
+    let path;
     
     let er = /[^a-z0-9-g()]/gi;
     videotitle = videotitle.replace(er, " ");
 
-    let download;
 
     switch (tipo) {
         case "MP3":
             format = ".mp3";
             download = ytdl.downloadFromInfo(info, {filter: 'audioonly'})
+            path = "./downloads/mp3/"
             break;
         case "MP4":
             format = ".mp4";
             download = ytdl.downloadFromInfo(info);
+            path = "./downloads/mp4/"
             break;
         default:
             format = ".mp3";
             download = ytdl.downloadFromInfo(info, {filter: 'audioonly'});
+            path = "./downloads/mp3/"
             break;
     }
 
-    const WriteStream = fs.createWriteStream("./downloads/" + videotitle + format);
+    const WriteStream = fs.createWriteStream(path + videotitle + format);
     download.pipe(WriteStream);
     res.redirect("/");
 }
