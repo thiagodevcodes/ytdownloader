@@ -6,6 +6,7 @@ async function baixarmusica(req, res) {
     let link = req.body.link;
     let info = await ytdl.getInfo(link);
     let videotitle = info.videoDetails.title;
+
     let format;
     let download;
     let path;
@@ -17,38 +18,24 @@ async function baixarmusica(req, res) {
         case "MP3":
             format = ".mp3";
             download = ytdl.downloadFromInfo(info, {filter: 'audioonly'})
-            path = "./static/downloads/"
+            path = "./static/cache/"
             break;
         case "MP4":
             format = ".mp4";
             download = ytdl.downloadFromInfo(info);
-            path = "./static/downloads/"
+            path = "./static/cache/"
             break;
         default:
             format = ".mp3";
             download = ytdl.downloadFromInfo(info, {filter: 'audioonly'});
-            path = "./static/downloads/"
+            path = "./static/cache/"
             break;
     }
 
     const WriteStream = fs.createWriteStream(path + videotitle + format);
-    console.log(path + videotitle + format)
     download.pipe(WriteStream);
-    
-    /*function apagar() {
-        let files = fs.readdirSync("./static/cache/");
-    
-        files.forEach(file => {
-            if(file != "download" + format) {
-                fs.rm("./static/downloads/" + file, function (err) {
-                    if (err) throw err;
-                });  
-            }
-        });
-    }
-    //apagar()*/
-    
-    res.redirect("/");
+
+    res.redirect("/download");
 }
 
 module.exports = baixarmusica;

@@ -14,7 +14,7 @@ body {
     background-color: white;
     border: 0.5px solid black;
     font-family: sans-serif;
-    padding: 40px 80px ;
+    padding: 35px 100px ;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
@@ -42,6 +42,7 @@ body {
     font-size: 20pt;
     font-weight: bold;
     text-align:center;
+    margin-bottom: 10px;
 }
 
 #img-logo {
@@ -52,6 +53,14 @@ body {
     display: flex;
     flex-wrap: nowrap;
 }
+
+#link2 {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 10px;
+}
+
 
 #link-input {
     width: 250px;
@@ -73,21 +82,31 @@ body {
     border-bottom: 0.5px solid black;
 }
 
-#button:hover, #link-a:hover {
-    background-color: rgb(116, 3, 3);
+#button2 {
+    background-color: rgb(206, 2, 2);
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    padding: 15px 50px;
+    border: 0.5px solid black ;
+    border-radius: 15px;
 }
 
 #link-a {
     background-color: rgb(206, 2, 2);
     border: none;
+    font-size: 14px;
     cursor: pointer;
     color: white;
-    font-size: 14px;
-    padding: 10px;
-    border-right: 0.5px solid black;
-    border-top: 0.5px solid black;
-    border-bottom: 0.5px solid black;
+    padding: 15px 50px;
+    border: 0.5px solid black ;
+    border-radius: 15px;
     text-decoration: none;
+}
+
+#button:hover, #button2:hover, #link-a:hover {
+    background-color: rgb(116, 3, 3);
 }
 
 

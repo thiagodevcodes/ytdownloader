@@ -1,17 +1,10 @@
-let link = document.getElementById("link-a");
-let select = document.getElementById("tipo");
-let button = document.getElementById("button");
+const button = document.getElementById("button2");
 
-let value = select.options[select.selectedIndex].value;
+function menu() {
+    window.location.href("/")
+} 
 
-console.log(value);
-
-if(value == "MP3") {
-    link.href = "/cache/download.mp3";
-} else {
-    link.href = "/cache/download.mp4";
-}
-
+button.addEventListener("click", menu)
 
 
 
