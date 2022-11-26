@@ -2,6 +2,10 @@ const ytdl = require("ytdl-core");
 const fs = require("fs");
 
 async function baixarmusica(req, res) {
+    if(!fs.existsSync("./static/cache")) {
+        fs.mkdirSync("./static/cache");
+    }
+
     let tipo = req.body.tipo;
     let link = req.body.link;
     let info = await ytdl.getInfo(link);
