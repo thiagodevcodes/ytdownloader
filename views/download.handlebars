@@ -9,20 +9,18 @@
     <link rel="icon" href="img/youtube-logo.png">
 </head>
 <body>
-    <div id="body">
     <section id="area">
-        <form method="get" action="/downloaded" id="form">
-            <div id="logo">
-                <img style="width: 50px;" src="/img/seta-para-baixo.png" alt="">
-                <span id="title-logo">Clique aqui para baixar</span>
+            <div id="videodetails">
+                <img id="thumb" src="{{thumb}}" alt="">
+                <p id="title-media">{{videotitle}} <br> <p>Formato: {{format}}</p></p>
             </div>
     
-            <div id="link2">
-                <button type="submit" id="button2">Baixar</button>
-                <a id="link-a" href="/">Voltar</a>
+            <div class="container-button">
+                <a class="button" href="/downloaded" type="submit">Baixar</a>
+                <a class="button" href="/">Voltar</a>
             </div>
+        
         </form>
     </section>  
-    </div>  
 </body>
 </html>

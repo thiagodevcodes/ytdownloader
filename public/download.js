@@ -1,14 +1,11 @@
 const ytdl = require("ytdl-core");
 const fs = require("fs");
 
-async function baixarmusica(req, res) {
+async function baixarmusica(tipo, info) {
     if(!fs.existsSync("./static/cache")) {
         fs.mkdirSync("./static/cache");
     }
 
-    let tipo = req.body.tipo;
-    let link = req.body.link;
-    let info = await ytdl.getInfo(link);
     let videotitle = info.videoDetails.title;
 
     let format;
@@ -39,7 +36,6 @@ async function baixarmusica(req, res) {
     const WriteStream = fs.createWriteStream(path + videotitle + format);
     download.pipe(WriteStream);
 
-    res.redirect("/download");
 }
 
 module.exports = baixarmusica;
