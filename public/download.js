@@ -1,7 +1,7 @@
 const ytdl = require("ytdl-core");
 const fs = require("fs");
 
-async function baixarmusica(tipo, info) {
+async function baixarMidia(tipo, info) {
     if(!fs.existsSync("./static/cache")) {
         fs.mkdirSync("./static/cache");
     }
@@ -38,4 +38,4 @@ async function baixarmusica(tipo, info) {
 
 }
 
-module.exports = baixarmusica;
+module.exports = baixarMidia;

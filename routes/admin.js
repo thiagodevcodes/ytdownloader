@@ -1,14 +1,10 @@
 const router = require("express").Router();
 const fs = require("fs");
-const baixarmusica = require("../public/download");
+const baixarMidia = require("../public/download");
 const ytdl = require("ytdl-core");
 
 router.get("/", (req, res) => {
     res.render('home');
-})
-
-router.get("/download", (req, res) => {
-    res.sendFile(__dirname + "/pages/download.html");
 })
 
 router.post("/select", async(req, res) => {
@@ -24,7 +20,7 @@ router.post("/select", async(req, res) => {
         });  
     });
     
-    baixarmusica(tipo, info);
+    baixarMidia(tipo, info);
     
     res.render('download', 
     { 
@@ -37,13 +33,9 @@ router.post("/select", async(req, res) => {
 router.get("/downloaded", (req, res) => {
     let files = fs.readdirSync("./static/cache/");
 
-    if(files.length > 0) {
-        res.download("./static/cache/" + files[0], function(err) {
-            if(err) throw err;
-        });
-    } else {
-        res.redirect("/")
-    }
+    res.download("./static/cache/" + files[0], function(err) {
+        if(err) throw err;
+    });
 
     files.forEach(file => {
         fs.rm("./static/cache/" + file, function (err) {
