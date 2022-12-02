@@ -23,7 +23,7 @@ async function baixarmusica(tipo, info) {
             break;
         case "MP4":
             format = ".mp4";
-            download = ytdl.downloadFromInfo(info);
+            download = ytdl.downloadFromInfo(info, {filter: 'videoandaudio'});
             path = "./static/cache/"
             break;
         default:
