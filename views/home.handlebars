@@ -9,7 +9,7 @@
     
 </head>
 <body>
-    <form id="area" method="post" action="/select">
+    <form id="area" method="post" action="/">
         <div id="logo">
             <span id="title-logo">YouTube Downloader</span>
             <img src="/img/youtube-logo.png" alt="" id="img-logo">
@@ -19,6 +19,10 @@
             <input placeholder="Cole aqui o Link" type="url" name="link" id="link-input" required>
             <button id="button" type="submit" >Selecionar</button>
         </div>
+        {{#if error}}
+            <label class="link-error">Link inválido, por favor digite um link válido!</label>
+        {{/if}}
+
     
         <div id="format">
             <label for="">Formato: </label>
@@ -27,6 +31,9 @@
                 <option value="MP4">MP4</option>
             </select>
         </div>
+
+        
+
     </form>  
 </body>
 </html>

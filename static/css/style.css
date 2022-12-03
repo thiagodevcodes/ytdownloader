@@ -8,6 +8,11 @@ body {
     background-color: rgb(206, 2, 2);
 }
 
+.link-error {
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
 #area {
     display: flex;
     flex-direction: column;
