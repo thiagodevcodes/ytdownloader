@@ -1,11 +1,7 @@
 const ytdl = require("ytdl-core");
 const fs = require("fs");
 
-async function baixarMidia(tipo, info) {
-    if(!fs.existsSync("./cache")) {
-        fs.mkdirSync("./cache");
-    }
-
+async function downloadFile(tipo, info) {
     let videotitle = info.videoDetails.title;
 
     let format;
@@ -17,25 +13,25 @@ async function baixarMidia(tipo, info) {
 
     switch (tipo) {
         case "MP3":
+            download = ytdl.downloadFromInfo(info, {filter: "audioonly"})
+            path = "./temp/"
             format = ".mp3";
-            download = ytdl.downloadFromInfo(info, {filter: 'audioonly'})
-            path = "./cache/"
             break;
         case "MP4":
+            download = ytdl.downloadFromInfo(info, {filter: "audioandvideo"});
+            path = "./temp/"
             format = ".mp4";
-            download = ytdl.downloadFromInfo(info, {filter: 'videoandaudio'});
-            path = "./cache/"
+           
             break;
         default:
             format = ".mp3";
             download = ytdl.downloadFromInfo(info, {filter: 'audioonly'});
-            path = "./cache/"
+            path = "./temp/"
             break;
     }
 
     const WriteStream = fs.createWriteStream(path + videotitle + format);
     download.pipe(WriteStream);
-
 }
 
-module.exports = baixarMidia;
+module.exports = downloadFile;

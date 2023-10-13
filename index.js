@@ -1,10 +1,16 @@
 const path = require("path");
 const express = require("express");
 const admin = require("./routes/admin");
+const fs = require("fs");
 const app = express();
 const bodyParser = require("body-parser");
 const handlebars = require("express-handlebars");
 
+if(!fs.existsSync("./temp")) {
+    const nomeDoDiretorio = "./temp"
+    fs.mkdirSync(nomeDoDiretorio);
+    console.log(`Diretório '${nomeDoDiretorio}' criado com sucesso.`);
+}
 
 //BODY PARSER
 
