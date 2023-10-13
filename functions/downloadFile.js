@@ -13,20 +13,20 @@ async function downloadFile(tipo, info) {
 
     switch (tipo) {
         case "MP3":
-            download = ytdl.downloadFromInfo(info, {filter: "audioonly"})
-            path = "./temp/"
+            download = ytdl.downloadFromInfo(info, {filter: "audioonly"});
+            path = "./temp/";
             format = ".mp3";
             break;
         case "MP4":
             download = ytdl.downloadFromInfo(info, {filter: "audioandvideo"});
-            path = "./temp/"
+            path = "./temp/";
             format = ".mp4";
            
             break;
         default:
             format = ".mp3";
             download = ytdl.downloadFromInfo(info, {filter: 'audioonly'});
-            path = "./temp/"
+            path = "./temp/";
             break;
     }
 

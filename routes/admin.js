@@ -7,7 +7,7 @@ function verifyDownload(req, res, next) {
     let files = fs.readdirSync("./temp/");
  
     if (files.length > 0) {
-      next(); // Permitir o acesso à rota
+      next(); 
     } else {
       res.redirect("/");
     }
@@ -37,10 +37,10 @@ router.post("/", async(req, res) => {
             videotitle: info.videoDetails.title, 
             thumb: info.videoDetails.thumbnails[0].url, 
             format: req.body.tipo
-        })
+        });
     } catch (error) {
-        res.render('home', { error: error})
-    }
+        res.render('home', { error: error});
+    };
 })
 
 router.get("/download", verifyDownload, (req, res) => {
@@ -50,7 +50,10 @@ router.get("/download", verifyDownload, (req, res) => {
         if (err) {
             console.error('Ocorreu um erro ao fazer o download do arquivo:', err);
             res.status(500).send('Ocorreu um erro ao fazer o download do arquivo.');
-        } 
+        } else {
+            console.log('Download Efetuado com sucesso de ' + files[0]);
+            res.status(200);
+        }
     });
 })
 

@@ -10,7 +10,7 @@ if(!fs.existsSync("./temp")) {
     const nomeDoDiretorio = "./temp"
     fs.mkdirSync(nomeDoDiretorio);
     console.log(`Diretório '${nomeDoDiretorio}' criado com sucesso.`);
-}
+};
 
 //BODY PARSER
 
@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "static")));
 
 //ROTAS
-app.use("/", admin)
+app.use("/", admin);
 
 //CONFIG SERVER
 
